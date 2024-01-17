@@ -1,17 +1,29 @@
 import streamlit as st
 import pandas as pd
-from sklearn.externals import joblib  # For scikit-learn version < 0.23
+import joblib  # For scikit-learn version < 0.23
 # If using scikit-learn version >= 0.23, use:
 # from sklearn import joblib
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler OneHotEncoder
 
 # Load the trained model
 model = joblib.load('random_forest_model.joblib')
 
 # Function for data preprocessing
 def preprocess_data(df):
-    # One-hot encode categorical variables
-    df = pd.get_dummies(df)
+    # List of categorical columns
+    categorical_columns = ['insurance', 'transmission_type', 'owner_type', 'fuel_type', 'body_type', 'city', 'brand']
+
+    # Extract the categorical columns from the DataFrame
+    df_categorical = df[categorical_columns]
+
+    # Create an instance of OneHotEncoder
+    encoder = OneHotEncoder(sparse=False, drop='first')  # 'drop' is set to 'first' to handle multicollinearity
+
+    # Fit and transform the categorical columns
+    df_encoded = pd.DataFrame(encoder.fit_transform(df_categorical), columns=encoder.get_feature_names_out(categorical_columns))
+
+    # Concatenate the encoded features with the original DataFrame, dropping the original categorical columns
+    df = pd.concat([df.drop(columns=categorical_columns), df_encoded], axis=1)
 
     # Initialize MinMaxScaler
     scaler = MinMaxScaler()
