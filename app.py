@@ -11,7 +11,7 @@ model = joblib.load('random_forest_model.joblib')
 # Function for data preprocessing
 def preprocess_data(df):
     # List of categorical columns
-    categorical_columns = ['insurance', 'transmission_type', 'owner_type', 'fuel_type', 'city', 'brand']
+    categorical_columns = ['insurance', 'transmission_type', 'owner_type', 'fuel_type','body_type' 'city', 'brand']
 
     # Extract the categorical columns from the DataFrame
     df_categorical = df[categorical_columns]
@@ -49,6 +49,7 @@ fuel_type = st.selectbox('Fuel Type', ['Petrol', 'Diesel', 'CNG' , 'Electric', '
 max_power = st.number_input('Max Power (bhp)', min_value=0, value=0)
 seats = st.number_input('Number of Seats', min_value=1, value=1)
 mileage = st.number_input('Mileage (kmpl)', min_value=0, value=0)
+body_type = st.selectbox('Body Type', ['Convertibles', 'Hatchback', 'Sedan', 'SUV', 'Minivans', 'Coupe', 'Pickup', 'Wagon'])
 city = st.selectbox('City', ['Agra', 'Gurgaon', 'Lucknow', 'Delhi', 'Chandigarh', 'Bangalore', 'Jaipur', 'Kolkata', 'Ahmedabad', 'Chennai', 'Pune', 'Mumbai', 'Hyderabad'])
 brand = st.selectbox('Brand', ['Audi', 'BMW', 'Chevrolet', 'Citroen', 'Datsun', 'Fiat', 'Force', 'Ford', 'Honda', 'Hyundai', 'Isuzu', 'Jaguar', 'Jeep', 'Kia', 'Land', 'Lexus', 'MG', 'Mahindra', 'Maruti', 'Mercedes-Benz', 'Mini', 'Mitsubishi', 'Nissan', 'Porsche', 'Renault', 'Skoda', 'Tata', 'Toyota', 'Volkswagen', 'Volvo'] )
 
@@ -65,6 +66,7 @@ if st.button('Predict'):
         'max_power': [max_power],
         'seats': [seats],
         'mileage': [mileage],
+        'body_type': [body_type],
         'city': [city],
         'brand': [brand]
     }))
