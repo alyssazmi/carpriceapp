@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from sklearn import joblib  # For scikit-learn version < 0.23
+import joblib  # For scikit-learn version < 0.23
 # If using scikit-learn version >= 0.23, use:
 # from sklearn import joblib
 from sklearn.preprocessing import MinMaxScaler
