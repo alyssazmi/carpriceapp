@@ -11,7 +11,7 @@ model = joblib.load('random_forest_model.joblib')
 # Function for data preprocessing
 def preprocess_data(df):
     # List of categorical columns
-    categorical_columns = ['insurance', 'transmission_type', 'owner_type', 'fuel_type', 'body_type', 'city', 'brand']
+    categorical_columns = ['insurance', 'transmission_type', 'owner_type', 'fuel_type', 'city', 'brand']
 
     # Extract the categorical columns from the DataFrame
     df_categorical = df[categorical_columns]
