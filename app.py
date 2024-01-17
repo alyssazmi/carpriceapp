@@ -17,7 +17,8 @@ def preprocess_data(df):
     df_categorical = df[categorical_columns]
 
     # Create an instance of OneHotEncoder
-    encoder = OneHotEncoder(sparse=False, drop='first')  # 'drop' is set to 'first' to handle multicollinearity
+    encoder = OneHotEncoder(sparse=False, drop='first', categories='auto')
+  # 'drop' is set to 'first' to handle multicollinearity
 
     # Fit and transform the categorical columns
     df_encoded = pd.DataFrame(encoder.fit_transform(df_categorical), columns=encoder.get_feature_names_out(categorical_columns))
