@@ -66,7 +66,6 @@ if st.button('Predict'):
         'max_power': [max_power],
         'seats': [seats],
         'mileage': [mileage],
-        'body_type': [body_type],
         'city': [city],
         'brand': [brand]
     }))
