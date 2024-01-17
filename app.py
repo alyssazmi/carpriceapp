@@ -3,7 +3,7 @@ import pandas as pd
 import joblib  # For scikit-learn version < 0.23
 # If using scikit-learn version >= 0.23, use:
 # from sklearn import joblib
-from sklearn.preprocessing import MinMaxScaler OneHotEncoder
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 
 # Load the trained model
 model = joblib.load('random_forest_model.joblib')
